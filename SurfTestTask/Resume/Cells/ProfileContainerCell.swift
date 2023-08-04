@@ -7,8 +7,12 @@
 
 import UIKit
 
+struct ProfileContainerCellModel {
+    var name: String
+    var description: String
+}
+
 class ProfileContainerCell: UITableViewCell {
-    // Создаем два UILabel-элемента для ячейки
     let profileContainerView = UIView()
     let profileTitleLabel = UILabel()
     let profileImageView = UIImageView()
@@ -48,7 +52,7 @@ class ProfileContainerCell: UITableViewCell {
         profileImageView.clipsToBounds = true
 
         // Добавление UILabel для имени и фамилии
-        nameLabel.text = "Ганзицкий Алексей \nЭдуардович"
+        nameLabel.text = ""
         nameLabel.numberOfLines = 2
         nameLabel.textAlignment = .center
         nameLabel.font = UIFont(name: "SFProDisplay-Bold", size: 24)
@@ -67,7 +71,7 @@ class ProfileContainerCell: UITableViewCell {
         descriptionLabel.numberOfLines = 2
         descriptionLabel.textColor = UIColor(red: 0.588, green: 0.584, blue: 0.608, alpha: 1)
         descriptionLabel.font = UIFont(name: "SFProDisplay-Regular", size: 14)
-        descriptionLabel.text = "junior iOS-разработчик, опыт 1 год самостоятельного обучения "
+        descriptionLabel.text = ""
         descriptionLabel.lineBreakMode = .byTruncatingTail
         descriptionLabel.textAlignment = .center
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -120,6 +124,11 @@ class ProfileContainerCell: UITableViewCell {
             imagePin.bottomAnchor.constraint(equalTo: hiddenLabel.bottomAnchor),
             imagePin.widthAnchor.constraint(equalToConstant: 16),
         ])
+    }
+
+    func configure(with model: ProfileContainerCellModel) {
+        nameLabel.text = model.name
+        descriptionLabel.text = model.description
     }
     
     required init?(coder aDecoder: NSCoder) {

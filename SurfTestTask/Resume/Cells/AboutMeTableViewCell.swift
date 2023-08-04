@@ -15,7 +15,6 @@ class AboutMeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupAboutMeLabel()
-   
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +39,7 @@ class AboutMeTableViewCell: UITableViewCell {
         textAboutMeLabel.font = UIFont(name: "SFProDisplay-Medium", size: 14)
          textAboutMeLabel.numberOfLines = 100
          textAboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
-         textAboutMeLabel.text = "Я правда пытался все сделать красиво, но подход через таблицу оказался не самым лучшим ,наверно, + не хватило времени нормально отстроить высоты ячеек, да и верстать все кодом было немного опрометчиво)"
+         textAboutMeLabel.text = "Я правда пытался все сделать красиво, но не хватило времени + не хватило времени нормально отстроить высоты ячеек, да и верстать все кодом было немного опрометчиво)"
          
          NSLayoutConstraint.activate([
              textAboutMeLabel.topAnchor.constraint(equalTo: aboutMeLabel.bottomAnchor, constant: 8),

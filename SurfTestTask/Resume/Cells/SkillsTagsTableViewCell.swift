@@ -17,10 +17,15 @@ class SkillsTagsTableViewCell: UITableViewCell {
     let editButton = UIButton()
     
     var txtInput = ""
-    var tagsArray:[String] = []
+    var tagsArray: [String] = []
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+    }
+
+    func configure(with tags: [String]) {
+        tagsArray = tags
         addSkillsContainer()
     }
     
