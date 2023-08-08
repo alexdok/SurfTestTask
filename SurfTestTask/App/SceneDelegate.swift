@@ -30,5 +30,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 }
-
 private var usingHardcodedValues = true

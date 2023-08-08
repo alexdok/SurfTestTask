@@ -22,7 +22,7 @@ class AboutMeTableViewCell: UITableViewCell {
     }
     
     private func setupAboutMeLabel() {
-         aboutMeLabel.text = "О себе"
+        aboutMeLabel.text = "about".localized
          aboutMeLabel.font = UIFont(name: "SFProDisplay-Medium", size: 16)
         contentView.addSubview(aboutMeLabel)
          aboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,7 @@ class AboutMeTableViewCell: UITableViewCell {
         textAboutMeLabel.font = UIFont(name: "SFProDisplay-Medium", size: 14)
          textAboutMeLabel.numberOfLines = 100
          textAboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
-         textAboutMeLabel.text = "Я правда пытался все сделать красиво, но не хватило времени + не хватило времени нормально отстроить высоты ячеек, да и верстать все кодом было немного опрометчиво)"
+        textAboutMeLabel.text = "about me".localized
          
          NSLayoutConstraint.activate([
              textAboutMeLabel.topAnchor.constraint(equalTo: aboutMeLabel.bottomAnchor, constant: 8),

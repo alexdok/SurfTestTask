@@ -3,6 +3,8 @@ import UIKit
 final class ResumeViewController: UIViewController {
     enum Constants {
         static let profileCellHeight: CGFloat = 287
+        static let tagsCellHeight: CGFloat = 385
+        static let aboutCellHeight: CGFloat = 200
     }
     private var tableView: UITableView!
     private let alertBuilder: AlertBuilder
@@ -17,8 +19,8 @@ final class ResumeViewController: UIViewController {
         var height: CGFloat {
             switch self {
             case .profile: return Constants.profileCellHeight
-            case .tags: return 385.0
-            case .about: return 200.0
+            case .tags: return Constants.tagsCellHeight
+            case .about: return Constants.aboutCellHeight
             }
         }
     }

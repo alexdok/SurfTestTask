@@ -90,7 +90,7 @@ class ProfileContainerCell: UITableViewCell {
         placeLabel.textColor = UIColor(red: 0.588, green: 0.584, blue: 0.608, alpha: 1)
         placeLabel.font = UIFont(name: "SFProDisplay-Regular", size: 14)
         placeLabel.lineBreakMode = .byTruncatingTail
-        placeLabel.text = "Воронеж"
+        placeLabel.text = "town".localized
         
         NSLayoutConstraint.activate([
             placeLabel.leadingAnchor.constraint(equalTo: profileContainerView.leadingAnchor, constant: 20),
@@ -105,7 +105,7 @@ class ProfileContainerCell: UITableViewCell {
         hiddenLabel.textColor = .clear
         hiddenLabel.font = UIFont(name: "SFProDisplay-Regular", size: 14)
         hiddenLabel.lineBreakMode = .byTruncatingTail
-        hiddenLabel.text = "Воронеж"
+        hiddenLabel.text = "town".localized
         
         NSLayoutConstraint.activate([
             hiddenLabel.centerXAnchor.constraint(equalTo: profileContainerView.centerXAnchor),

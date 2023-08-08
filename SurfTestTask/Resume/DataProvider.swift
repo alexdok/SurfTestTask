@@ -15,11 +15,11 @@ protocol DataProvider {
 final class DataProviderHardcodedImpl: DataProvider {
     private var tags = [String]()
     func provideCurrentTags() -> [String] {
-        ["gdfgdf", "gdfgdf"]
+        ["first", "second"]
     }
 
     func modelForProfileCell() -> ProfileContainerCellModel {
-        .init(name: "Ганзицкий Алексей \nЭдуардович", description: "junior iOS-разработчик, опыт 1 год самостоятельного обучения ")
+        .init(name: "name".localized, description: "experience".localized)
     }
 }
 
@@ -33,6 +33,6 @@ final class DataProviderUserDefaultsImpl: DataProvider {
         self.userDefaults = userDefaults
     }
     func modelForProfileCell() -> ProfileContainerCellModel {
-        ProfileContainerCellModel( name: "Ганзицкий Алексей Эдуардович", description: "fgdgdfgdf")
+        ProfileContainerCellModel( name: "", description: "")
     }
 }
