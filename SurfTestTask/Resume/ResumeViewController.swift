@@ -3,12 +3,13 @@ import UIKit
 final class ResumeViewController: UIViewController {
     enum Constants {
         static let profileCellHeight: CGFloat = 287
-        static let tagsCellHeight: CGFloat = 385
+        static var tagsCellHeight: CGFloat = 385
         static let aboutCellHeight: CGFloat = 200
     }
     private var tableView: UITableView!
     private let alertBuilder: AlertBuilder
     private let dataProvider: DataProvider
+   
     
     // Enum representing sections
     private enum Section: Int, CaseIterable {
@@ -37,7 +38,6 @@ final class ResumeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureNavigationItemTitle()
         tableView = createTableView()
         view.addSubview(tableView)
@@ -66,6 +66,11 @@ final class ResumeViewController: UIViewController {
         titleLabel.sizeToFit()
         navigationItem.titleView = titleLabel
         navigationItem.titleView?.backgroundColor = .systemGray6
+    }
+    
+    func apdateHeight() {
+        Constants.tagsCellHeight += 60
+        tableView.reloadData()
     }
 
     private func createTableView() -> UITableView {
@@ -107,6 +112,7 @@ extension ResumeViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(for: indexPath) as SkillsTagsTableViewCell
             cell.configure(with: dataProvider.provideCurrentTags())
             cell.delegate = self
+            cell.delegateHeight = self
             return cell
         case .about:
             return tableView.dequeueReusableCell(for: indexPath) as AboutMeTableViewCell
@@ -122,4 +128,15 @@ extension ResumeViewController: SkillsTableViewCellDelegate {
 
 enum HardcodedConstants {
     static let name = "Ганзицкий"
+}
+
+extension ResumeViewController: SkillsTableViewCellChangeHeightDelegate {
+    func addHeight() {
+        apdateHeight()
+    }
+    
+    func removeHeight() {
+        print("")
+    }
+    
 }

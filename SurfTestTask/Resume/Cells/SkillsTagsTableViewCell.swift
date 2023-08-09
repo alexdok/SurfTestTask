@@ -9,8 +9,14 @@ protocol SkillsTableViewCellDelegate: AnyObject {
     func alertForNewTag()
 }
 
+protocol SkillsTableViewCellChangeHeightDelegate: AnyObject {
+    func addHeight()
+    func removeHeight()
+}
+
 class SkillsTagsTableViewCell: UITableViewCell {
     weak var delegate: SkillsTableViewCellDelegate?
+    weak var delegateHeight: SkillsTableViewCellChangeHeightDelegate?
     let skillsContainerView = UIView()
     let skillsLabel = UILabel()
     var isEditingMode: Bool = false
@@ -69,18 +75,33 @@ class SkillsTagsTableViewCell: UITableViewCell {
         loadTags()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.createTagCloud(OnView: self.contentView, withArray: self.tagsArray as [AnyObject])
+            UIButton.appearance().isHidden = true
         }
     }
-
+    
     @objc func editButtonTapped() {
-          isEditingMode.toggle()
-          if isEditingMode {
-              editButton.setImage(UIImage(named: "Pan"), for: .normal)
-              delegate?.alertForNewTag()
-          } else {
-              editButton.setImage(UIImage(named: "OkButton"), for: .normal)
-          }
-      }
+        isEditingMode.toggle()
+        UIButton.appearance().isHidden = false
+        if isEditingMode {
+            editButton.setImage(UIImage(named: "OkButton"), for: .normal)
+            addTag(text: "+")
+           
+        } else {
+            editButton.setImage(UIImage(named: "Pan"), for: .normal)
+            if !tagsArray.isEmpty {
+                tagsArray.removeAll { $0 == "+" }
+            }
+            UIButton.appearance().isHidden = true
+            createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.saveTags()
+            }
+        }
+    }
+    
+  @IBAction func alert() {
+        delegate?.alertForNewTag()
+    }
     
     func saveTags() {
         UserDefaults.standard.setValue(tagsArray, forKey: "tags")
@@ -94,6 +115,9 @@ class SkillsTagsTableViewCell: UITableViewCell {
     func addTag(text: String) {
         if text.count != 0 {
             tagsArray.append(text)
+            if tagsArray.count >= 2 && tagsArray.contains("+") && tagsArray.last != "+" {
+            tagsArray.swapAt(tagsArray.count - 1, tagsArray.count - 2)
+            }
             createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
             saveTags()
         }
@@ -113,14 +137,14 @@ class SkillsTagsTableViewCell: UITableViewCell {
             let startstring = str as! String
             let width = startstring.widthOfString(usingFont: UIFont(name:"AppleSDGothicNeo-Regular", size: 13.0)!)
             let checkWholeWidth = CGFloat(xPos) + CGFloat(width) + CGFloat(13.0) + CGFloat(25.5)
-            let checkWholeHeight = CGFloat(yPos) + CGFloat(56)
-            guard checkWholeHeight < contentView.bounds.size.height - 10  else {
-                return
-            }
             
             if checkWholeWidth > UIScreen.main.bounds.size.width - 30.0 {
                 xPos = 16
                 yPos = yPos + 56
+                if yPos > contentView.bounds.size.height - 50 {
+                    delegateHeight?.addHeight()
+                    return
+                }
             }
             
             let bgView = UIView(frame: CGRect(x: xPos, y: yPos, width:width + 48 , height: 44))
@@ -128,12 +152,17 @@ class SkillsTagsTableViewCell: UITableViewCell {
             bgView.backgroundColor = .systemGray
             bgView.tag = tag
             
+            if startstring == "+" {
+                let recognizer = UITapGestureRecognizer(target: self, action: #selector(alert))
+                bgView.addGestureRecognizer(recognizer)
+            }
+            
             let textlable = UILabel(frame: CGRect(x: 17.0, y: 0.0, width: width, height: bgView.frame.size.height))
             textlable.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 13.0)
             textlable.text = startstring
             textlable.textColor = UIColor.white
             bgView.addSubview(textlable)
-            
+                
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: bgView.frame.size.width - 2.5 - 23.0, y: bgView.frame.size.height/2-11 , width: 22.0, height: 22.0)
             button.backgroundColor = .clear
@@ -141,7 +170,9 @@ class SkillsTagsTableViewCell: UITableViewCell {
             button.setImage(UIImage(named: "X"), for: .normal)
             button.tag = tag
             button.addTarget(self, action: #selector(removeTag(_:)), for: .touchUpInside)
-            bgView.addSubview(button)
+            if startstring != "+" {
+                bgView.addSubview(button)
+            }
             xPos = CGFloat(xPos) + CGFloat(width) + CGFloat(17.0) + CGFloat(43.0)
             view.addSubview(bgView)
             tag = tag + 1
