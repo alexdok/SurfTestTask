@@ -21,6 +21,8 @@ class SkillsTagsTableViewCell: UITableViewCell {
     let skillsLabel = UILabel()
     var isEditingMode: Bool = false
     let editButton = UIButton()
+    var lastPositionY: CGFloat = 0
+    var arrayPositionsY: [CGFloat] = []
     
     var txtInput = ""
     var tagsArray: [String] = []
@@ -181,6 +183,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
     
     @IBAction func removeTag(_ sender: AnyObject) {
         tagsArray.remove(at: (sender.tag - 1))
+        
         createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.saveTags()
