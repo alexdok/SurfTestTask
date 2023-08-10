@@ -68,11 +68,16 @@ final class ResumeViewController: UIViewController {
         navigationItem.titleView?.backgroundColor = .systemGray6
     }
     
-    func updateHeight() {
+    func plusHeight() {
         Constants.tagsCellHeight += 60
         tableView.reloadData()
     }
 
+    func minusHeight() {
+        Constants.tagsCellHeight -= 60
+        tableView.reloadData()
+    }
+    
     private func createTableView() -> UITableView {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.delegate = self
@@ -132,11 +137,10 @@ enum HardcodedConstants {
 
 extension ResumeViewController: SkillsTableViewCellChangeHeightDelegate {
     func addHeight() {
-        updateHeight()
+        plusHeight()
     }
     
     func removeHeight() {
-   
+        minusHeight()
     }
-    
 }

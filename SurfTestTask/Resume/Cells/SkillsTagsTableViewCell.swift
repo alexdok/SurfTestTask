@@ -10,8 +10,8 @@ protocol SkillsTableViewCellDelegate: AnyObject {
 }
 
 protocol SkillsTableViewCellChangeHeightDelegate: AnyObject {
-    func addHeight()
-    func removeHeight()
+    func plusHeight()
+    func minusHeight()
 }
 
 class SkillsTagsTableViewCell: UITableViewCell {
@@ -22,7 +22,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
     var isEditingMode: Bool = false
     let editButton = UIButton()
     var lastPositionY: CGFloat = 0
-    var arrayPositionsY: [CGFloat] = []
+    var arrayCellsTags: [UIView] = []
     
     var txtInput = ""
     var tagsArray: [String] = []
@@ -62,7 +62,11 @@ class SkillsTagsTableViewCell: UITableViewCell {
         ])
         
         // Настройка кнопки "режима редактирования"
-        editButton.setImage(UIImage(named: "Pan"), for: .normal) // Используйте свои собственные изображения для иконок
+        if !isEditingMode {
+            editButton.setImage(UIImage(named: "Pan"), for: .normal)
+        } else {
+            editButton.setImage(UIImage(named: "OkButton"), for: .normal)
+        }
         editButton.translatesAutoresizingMaskIntoConstraints = false
         editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         skillsContainerView.addSubview(editButton)
@@ -97,6 +101,8 @@ class SkillsTagsTableViewCell: UITableViewCell {
             createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.saveTags()
+                self.comresureContentView()
+                
             }
         }
     }
@@ -126,6 +132,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
     }
     
     func createTagCloud(OnView view: UIView, withArray data:[AnyObject]) {
+        arrayCellsTags.removeAll()
         for tempView in view.subviews {
             if tempView.tag != 0 {
                 tempView.removeFromSuperview()
@@ -144,7 +151,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
                 xPos = 16
                 yPos = yPos + 56
                 if yPos > contentView.bounds.size.height - 50 {
-                    delegateHeight?.addHeight()
+                    delegateHeight?.plusHeight()
                     return
                 }
             }
@@ -164,6 +171,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
             textlable.text = startstring
             textlable.textColor = UIColor.white
             bgView.addSubview(textlable)
+            arrayCellsTags.append(bgView)
                 
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: bgView.frame.size.width - 2.5 - 23.0, y: bgView.frame.size.height/2-11 , width: 22.0, height: 22.0)
@@ -183,10 +191,19 @@ class SkillsTagsTableViewCell: UITableViewCell {
     
     @IBAction func removeTag(_ sender: AnyObject) {
         tagsArray.remove(at: (sender.tag - 1))
-        
+        arrayCellsTags.remove(at: (sender.tag - 1))
+       
         createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
+       
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.saveTags()
+        }
+    }
+    
+    func comresureContentView() {
+        guard let originY = arrayCellsTags.last?.frame.origin.y else { return }
+        if originY + 56 < contentView.bounds.height + 20 {
+            delegateHeight?.minusHeight()
         }
     }
     
