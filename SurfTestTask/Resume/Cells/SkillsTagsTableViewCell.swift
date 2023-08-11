@@ -26,12 +26,12 @@ class SkillsTagsTableViewCell: UITableViewCell {
     
     var txtInput = ""
     var tagsArray: [String] = []
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        
     }
-
+    
     func configure(with tags: [String]) {
         tagsArray = tags
         addSkillsContainer()
@@ -55,7 +55,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
         skillsLabel.translatesAutoresizingMaskIntoConstraints = false
         skillsContainerView.addSubview(skillsLabel)
         
-   
+        
         NSLayoutConstraint.activate([
             skillsLabel.topAnchor.constraint(equalTo: skillsContainerView.topAnchor, constant: 20),
             skillsLabel.leadingAnchor.constraint(equalTo: skillsContainerView.leadingAnchor, constant: 16),
@@ -91,7 +91,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
         if isEditingMode {
             editButton.setImage(UIImage(named: "OkButton"), for: .normal)
             addTag(text: "+")
-           
+            
         } else {
             editButton.setImage(UIImage(named: "Pan"), for: .normal)
             if !tagsArray.isEmpty {
@@ -100,34 +100,33 @@ class SkillsTagsTableViewCell: UITableViewCell {
             UIButton.appearance().isHidden = true
             createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.saveTags()
+                self.saveTags(arrayTags: self.tagsArray)
                 self.comresureContentView()
-                
             }
         }
     }
     
-  @IBAction func alert() {
+    @IBAction func alert() {
         delegate?.alertForNewTag()
     }
     
-    func saveTags() {
-        UserDefaults.standard.setValue(tagsArray, forKey: "tags")
+    func saveTags(arrayTags: [String]) {
+        SkillsTagsManager.shared.saveTags(arrayTags)
     }
+    
     func loadTags() {
-        if let tagsArray = UserDefaults.standard.value(forKey: "tags") as? [String] {
-            self.tagsArray = tagsArray
-        }
+        tagsArray = SkillsTagsManager.shared.loadTags()
     }
-
+    
+    
     func addTag(text: String) {
         if text.count != 0 {
             tagsArray.append(text)
             if tagsArray.count >= 2 && tagsArray.contains("+") && tagsArray.last != "+" {
-            tagsArray.swapAt(tagsArray.count - 1, tagsArray.count - 2)
+                tagsArray.swapAt(tagsArray.count - 1, tagsArray.count - 2)
             }
             createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
-            saveTags()
+            saveTags(arrayTags: tagsArray)
         }
     }
     
@@ -172,7 +171,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
             textlable.textColor = UIColor.white
             bgView.addSubview(textlable)
             arrayCellsTags.append(bgView)
-                
+            
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: bgView.frame.size.width - 2.5 - 23.0, y: bgView.frame.size.height/2-11 , width: 22.0, height: 22.0)
             button.backgroundColor = .clear
@@ -192,11 +191,11 @@ class SkillsTagsTableViewCell: UITableViewCell {
     @IBAction func removeTag(_ sender: AnyObject) {
         tagsArray.remove(at: (sender.tag - 1))
         arrayCellsTags.remove(at: (sender.tag - 1))
-       
+        
         createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
-       
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.saveTags()
+            self.saveTags(arrayTags: self.tagsArray)
         }
     }
     
@@ -218,7 +217,7 @@ extension String {
         let size = self.size(withAttributes: fontAttributes)
         return size.width
     }
-        var localized: String {
-            NSLocalizedString(self, comment: "")
-        }
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
 }

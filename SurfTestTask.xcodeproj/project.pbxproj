@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		04C2611A2A7C095B0054BCA2 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C261192A7C095B0054BCA2 /* AlertBuilder.swift */; };
 		04EA94CC2A7A57EB00B1392B /* UITableView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA94CB2A7A57EB00B1392B /* UITableView+ReusableView.swift */; };
+		90408FA52A85061B006434E2 /* SkillsTagsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90408FA42A85061B006434E2 /* SkillsTagsManager.swift */; };
 		9042AC852A7CE48200FB7B50 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042AC842A7CE48200FB7B50 /* DataProvider.swift */; };
 		905DF0002A823D9900A63352 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 905DEFFF2A823D9900A63352 /* Localizable.strings */; };
 		90B2B3192A78EAE6006F97AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B3182A78EAE6006F97AC /* AppDelegate.swift */; };
@@ -19,11 +20,13 @@
 		90B2B3362A792BCB006F97AC /* ProfileContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B3352A792BCB006F97AC /* ProfileContainerCell.swift */; };
 		90B2B33A2A79354C006F97AC /* AboutMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B3392A79354C006F97AC /* AboutMeTableViewCell.swift */; };
 		90B2B33C2A7941D7006F97AC /* SkillsTagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B33B2A7941D7006F97AC /* SkillsTagsTableViewCell.swift */; };
+		90FCC9C72A8642AD006E819E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FCC9C62A8642AD006E819E /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04C261192A7C095B0054BCA2 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		04EA94CB2A7A57EB00B1392B /* UITableView+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableView.swift"; sourceTree = "<group>"; };
+		90408FA42A85061B006434E2 /* SkillsTagsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTagsManager.swift; sourceTree = "<group>"; };
 		9042AC842A7CE48200FB7B50 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		905DEFFF2A823D9900A63352 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		90B2B3152A78EAE6006F97AC /* SurfTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurfTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +39,7 @@
 		90B2B3352A792BCB006F97AC /* ProfileContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContainerCell.swift; sourceTree = "<group>"; };
 		90B2B3392A79354C006F97AC /* AboutMeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeTableViewCell.swift; sourceTree = "<group>"; };
 		90B2B33B2A7941D7006F97AC /* SkillsTagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTagsTableViewCell.swift; sourceTree = "<group>"; };
+		90FCC9C62A8642AD006E819E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				90B2B3332A792075006F97AC /* ResumeViewController.swift */,
+				90FCC9C62A8642AD006E819E /* File.swift */,
 				9042AC842A7CE48200FB7B50 /* DataProvider.swift */,
 				90B2B3412A7990B8006F97AC /* Cells */,
 			);
@@ -136,6 +141,7 @@
 			children = (
 				90B2B3352A792BCB006F97AC /* ProfileContainerCell.swift */,
 				90B2B33B2A7941D7006F97AC /* SkillsTagsTableViewCell.swift */,
+				90408FA42A85061B006434E2 /* SkillsTagsManager.swift */,
 				90B2B3392A79354C006F97AC /* AboutMeTableViewCell.swift */,
 			);
 			path = Cells;
@@ -216,10 +222,12 @@
 				90B2B33A2A79354C006F97AC /* AboutMeTableViewCell.swift in Sources */,
 				04EA94CC2A7A57EB00B1392B /* UITableView+ReusableView.swift in Sources */,
 				90B2B33C2A7941D7006F97AC /* SkillsTagsTableViewCell.swift in Sources */,
+				90408FA52A85061B006434E2 /* SkillsTagsManager.swift in Sources */,
 				04C2611A2A7C095B0054BCA2 /* AlertBuilder.swift in Sources */,
 				90B2B3192A78EAE6006F97AC /* AppDelegate.swift in Sources */,
 				9042AC852A7CE48200FB7B50 /* DataProvider.swift in Sources */,
 				90B2B3342A792075006F97AC /* ResumeViewController.swift in Sources */,
+				90FCC9C72A8642AD006E819E /* File.swift in Sources */,
 				90B2B31B2A78EAE6006F97AC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
