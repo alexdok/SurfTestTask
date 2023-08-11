@@ -20,7 +20,6 @@
 		90B2B3362A792BCB006F97AC /* ProfileContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B3352A792BCB006F97AC /* ProfileContainerCell.swift */; };
 		90B2B33A2A79354C006F97AC /* AboutMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B3392A79354C006F97AC /* AboutMeTableViewCell.swift */; };
 		90B2B33C2A7941D7006F97AC /* SkillsTagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B33B2A7941D7006F97AC /* SkillsTagsTableViewCell.swift */; };
-		90FCC9C72A8642AD006E819E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FCC9C62A8642AD006E819E /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +38,6 @@
 		90B2B3352A792BCB006F97AC /* ProfileContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContainerCell.swift; sourceTree = "<group>"; };
 		90B2B3392A79354C006F97AC /* AboutMeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeTableViewCell.swift; sourceTree = "<group>"; };
 		90B2B33B2A7941D7006F97AC /* SkillsTagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTagsTableViewCell.swift; sourceTree = "<group>"; };
-		90FCC9C62A8642AD006E819E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				90B2B3332A792075006F97AC /* ResumeViewController.swift */,
-				90FCC9C62A8642AD006E819E /* File.swift */,
 				9042AC842A7CE48200FB7B50 /* DataProvider.swift */,
 				90B2B3412A7990B8006F97AC /* Cells */,
 			);
@@ -227,7 +224,6 @@
 				90B2B3192A78EAE6006F97AC /* AppDelegate.swift in Sources */,
 				9042AC852A7CE48200FB7B50 /* DataProvider.swift in Sources */,
 				90B2B3342A792075006F97AC /* ResumeViewController.swift in Sources */,
-				90FCC9C72A8642AD006E819E /* File.swift in Sources */,
 				90B2B31B2A78EAE6006F97AC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
