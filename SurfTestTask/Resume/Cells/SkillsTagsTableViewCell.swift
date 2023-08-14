@@ -66,11 +66,11 @@ final class SkillsTagsTableViewCell: UITableViewCell {
         delegate?.alertForNewTag()
     }
     
-    func saveTags(arrayTags: [String]) {
+   private func saveTags(arrayTags: [String]) {
         SkillsTagsManager.shared.saveTags(arrayTags)
     }
     
-    func loadTags() {
+   private func loadTags() {
         tagsArray = SkillsTagsManager.shared.loadTags()
     }
     

@@ -5,6 +5,7 @@ final class ResumeViewController: UIViewController {
         static let profileCellHeight: CGFloat = 287
         static var tagsCellHeight: CGFloat = 100
         static let aboutCellHeight: CGFloat = 200
+        static let changeHeigth: CGFloat = 60
     }
     private var tableView: UITableView!
     private let alertBuilder: AlertBuilder
@@ -73,10 +74,10 @@ final class ResumeViewController: UIViewController {
     func changeHeight(addOrRemoveHeight: ChanngeHeightCell) {
         switch addOrRemoveHeight {
         case .add:
-            Constants.tagsCellHeight += 60
+            Constants.tagsCellHeight += Constants.changeHeigth
             tableView.reloadData()
         case .remove:
-            Constants.tagsCellHeight -= 60
+            Constants.tagsCellHeight -= Constants.changeHeigth
             tableView.reloadData()
         }
     }
