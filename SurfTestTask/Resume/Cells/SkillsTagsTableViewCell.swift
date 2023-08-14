@@ -19,7 +19,7 @@ enum ChanngeHeightCell {
     case remove
 }
 
-class SkillsTagsTableViewCell: UITableViewCell {
+final class SkillsTagsTableViewCell: UITableViewCell {
     weak var delegate: SkillsTableViewCellDelegate?
     weak var delegateHeight: SkillsTableViewCellChangeHeightDelegate?
     let skillsContainerView = UIView()
@@ -40,54 +40,6 @@ class SkillsTagsTableViewCell: UITableViewCell {
     func configure(with tags: [String]) {
         tagsArray = tags
         addSkillsContainer()
-    }
-    
-    func addSkillsContainer() {
-        contentView.addSubview(skillsContainerView)
-        skillsContainerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            skillsContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            skillsContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            skillsContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            skillsContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        ])
-        skillsContainerView.backgroundColor = .white
-        // Настройка UILabel "Мои навыки"
-        skillsLabel.text = "my skills".localized
-        skillsLabel.font = UIFont(name: "SFProDisplay-Bold", size: 20)
-        skillsLabel.textColor = .black
-        skillsLabel.translatesAutoresizingMaskIntoConstraints = false
-        skillsContainerView.addSubview(skillsLabel)
-        
-        
-        NSLayoutConstraint.activate([
-            skillsLabel.topAnchor.constraint(equalTo: skillsContainerView.topAnchor, constant: 20),
-            skillsLabel.leadingAnchor.constraint(equalTo: skillsContainerView.leadingAnchor, constant: 16),
-        ])
-        
-        // Настройка кнопки "режима редактирования"
-        if !isEditingMode {
-            editButton.setImage(UIImage(named: "Pan"), for: .normal)
-        } else {
-            editButton.setImage(UIImage(named: "OkButton"), for: .normal)
-        }
-        editButton.translatesAutoresizingMaskIntoConstraints = false
-        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
-        skillsContainerView.addSubview(editButton)
-        
-        // Активация констрейнтов для кнопки "режима редактирования"
-        NSLayoutConstraint.activate([
-            editButton.centerYAnchor.constraint(equalTo: skillsLabel.centerYAnchor),
-            editButton.trailingAnchor.constraint(equalTo: skillsContainerView.trailingAnchor, constant: -16),
-            editButton.widthAnchor.constraint(equalToConstant: 30),
-            editButton.heightAnchor.constraint(equalToConstant: 30),
-        ])
-        loadTags()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.createTagCloud(OnView: self.contentView, withArray: self.tagsArray as [AnyObject])
-            UIButton.appearance().isHidden = true
-        }
     }
     
     @objc func editButtonTapped() {
@@ -215,13 +167,51 @@ class SkillsTagsTableViewCell: UITableViewCell {
     }
 }
 
-extension String {
-    func widthOfString(usingFont font: UIFont) -> CGFloat {
-        let fontAttributes = [NSAttributedString.Key.font: font]
-        let size = self.size(withAttributes: fontAttributes)
-        return size.width
-    }
-    var localized: String {
-        NSLocalizedString(self, comment: "")
+extension SkillsTagsTableViewCell {
+    func addSkillsContainer() {
+        contentView.addSubview(skillsContainerView)
+        skillsContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            skillsContainerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            skillsContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            skillsContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            skillsContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+        ])
+        skillsContainerView.backgroundColor = .white
+        // Настройка UILabel "Мои навыки"
+        skillsLabel.text = "my skills".localized
+        skillsLabel.font = UIFont(name: "SFProDisplay-Bold", size: 20)
+        skillsLabel.textColor = .black
+        skillsLabel.translatesAutoresizingMaskIntoConstraints = false
+        skillsContainerView.addSubview(skillsLabel)
+        
+        NSLayoutConstraint.activate([
+            skillsLabel.topAnchor.constraint(equalTo: skillsContainerView.topAnchor, constant: 20),
+            skillsLabel.leadingAnchor.constraint(equalTo: skillsContainerView.leadingAnchor, constant: 16),
+        ])
+        
+        // Настройка кнопки "режима редактирования"
+        if !isEditingMode {
+            editButton.setImage(UIImage(named: "Pan"), for: .normal)
+        } else {
+            editButton.setImage(UIImage(named: "OkButton"), for: .normal)
+        }
+        editButton.translatesAutoresizingMaskIntoConstraints = false
+        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        skillsContainerView.addSubview(editButton)
+        
+        // Активация констрейнтов для кнопки "режима редактирования"
+        NSLayoutConstraint.activate([
+            editButton.centerYAnchor.constraint(equalTo: skillsLabel.centerYAnchor),
+            editButton.trailingAnchor.constraint(equalTo: skillsContainerView.trailingAnchor, constant: -16),
+            editButton.widthAnchor.constraint(equalToConstant: 30),
+            editButton.heightAnchor.constraint(equalToConstant: 30),
+        ])
+        loadTags()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.createTagCloud(OnView: self.contentView, withArray: self.tagsArray as [AnyObject])
+            UIButton.appearance().isHidden = true
+        }
     }
 }

@@ -12,7 +12,7 @@ struct ProfileContainerCellModel {
     var description: String
 }
 
-class ProfileContainerCell: UITableViewCell {
+final class ProfileContainerCell: UITableViewCell {
     let profileContainerView = UIView()
     let profileTitleLabel = UILabel()
     let profileImageView = UIImageView()

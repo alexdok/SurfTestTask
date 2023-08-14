@@ -12,6 +12,7 @@
 		90408FA52A85061B006434E2 /* SkillsTagsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90408FA42A85061B006434E2 /* SkillsTagsManager.swift */; };
 		9042AC852A7CE48200FB7B50 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9042AC842A7CE48200FB7B50 /* DataProvider.swift */; };
 		905DF0002A823D9900A63352 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 905DEFFF2A823D9900A63352 /* Localizable.strings */; };
+		907011BF2A8A407800F0BF84 /* String+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907011BE2A8A407800F0BF84 /* String+extensions.swift */; };
 		90B2B3192A78EAE6006F97AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B3182A78EAE6006F97AC /* AppDelegate.swift */; };
 		90B2B31B2A78EAE6006F97AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B2B31A2A78EAE6006F97AC /* SceneDelegate.swift */; };
 		90B2B3222A78EAE6006F97AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90B2B3212A78EAE6006F97AC /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		90408FA42A85061B006434E2 /* SkillsTagsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTagsManager.swift; sourceTree = "<group>"; };
 		9042AC842A7CE48200FB7B50 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		905DEFFF2A823D9900A63352 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		907011BE2A8A407800F0BF84 /* String+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extensions.swift"; sourceTree = "<group>"; };
 		90B2B3152A78EAE6006F97AC /* SurfTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurfTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B2B3182A78EAE6006F97AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90B2B31A2A78EAE6006F97AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 			path = Resume;
 			sourceTree = "<group>";
 		};
+		907011BD2A8A405400F0BF84 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				907011BE2A8A407800F0BF84 /* String+extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		90B2B30C2A78EAE6006F97AC = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 		90B2B3172A78EAE6006F97AC /* SurfTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				907011BD2A8A405400F0BF84 /* Extensions */,
 				905DEFFF2A823D9900A63352 /* Localizable.strings */,
 				04C261182A7C09450054BCA2 /* Alert */,
 				04EA94CE2A7A5A7200B1392B /* App */,
@@ -217,6 +228,7 @@
 			files = (
 				90B2B3362A792BCB006F97AC /* ProfileContainerCell.swift in Sources */,
 				90B2B33A2A79354C006F97AC /* AboutMeTableViewCell.swift in Sources */,
+				907011BF2A8A407800F0BF84 /* String+extensions.swift in Sources */,
 				04EA94CC2A7A57EB00B1392B /* UITableView+ReusableView.swift in Sources */,
 				90B2B33C2A7941D7006F97AC /* SkillsTagsTableViewCell.swift in Sources */,
 				90408FA52A85061B006434E2 /* SkillsTagsManager.swift in Sources */,

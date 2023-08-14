@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AboutMeTableViewCell: UITableViewCell {
+final class AboutMeTableViewCell: UITableViewCell {
     
     let aboutMeLabel = UILabel()
     let textAboutMeLabel = UILabel()
