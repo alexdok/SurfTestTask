@@ -23,7 +23,7 @@ final class AboutMeTableViewCell: UITableViewCell {
     
     private func setupAboutMeLabel() {
         aboutMeLabel.text = "about".localized
-         aboutMeLabel.font = UIFont(name: "SFProDisplay-Medium", size: 16)
+        aboutMeLabel.font = UIFont(name: Fonts.sFProDisplayMedium.name, size: 16)
         contentView.addSubview(aboutMeLabel)
          aboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
          
@@ -36,7 +36,7 @@ final class AboutMeTableViewCell: UITableViewCell {
          ])
 
          contentView.addSubview(textAboutMeLabel)
-        textAboutMeLabel.font = UIFont(name: "SFProDisplay-Medium", size: 14)
+        textAboutMeLabel.font = UIFont(name: Fonts.sFProDisplayMedium.name, size: 14)
          textAboutMeLabel.numberOfLines = 100
          textAboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
         textAboutMeLabel.text = "about me".localized

@@ -48,14 +48,14 @@ final class ProfileContainerCell: UITableViewCell {
             profileImageView.heightAnchor.constraint(equalToConstant: 120),
         ])
         profileImageView.layer.cornerRadius = 60
-        profileImageView.image = UIImage(named: "photo")
+        profileImageView.image = UIImage(named: ImagesNames.photo.name)
         profileImageView.clipsToBounds = true
 
         // Добавление UILabel для имени и фамилии
         nameLabel.text = ""
         nameLabel.numberOfLines = 2
         nameLabel.textAlignment = .center
-        nameLabel.font = UIFont(name: "SFProDisplay-Bold", size: 24)
+        nameLabel.font = UIFont(name: Fonts.sFProDisplayBold.name, size: 24)
         nameLabel.lineBreakMode = .byTruncatingTail
         nameLabel.textColor = .black
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ final class ProfileContainerCell: UITableViewCell {
         // Добавление UILabel для описания профиля
         descriptionLabel.numberOfLines = 2
         descriptionLabel.textColor = UIColor(red: 0.588, green: 0.584, blue: 0.608, alpha: 1)
-        descriptionLabel.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        descriptionLabel.font = UIFont(name: Fonts.sFProDisplayRegular.name, size: 14)
         descriptionLabel.text = ""
         descriptionLabel.lineBreakMode = .byTruncatingTail
         descriptionLabel.textAlignment = .center
@@ -88,7 +88,7 @@ final class ProfileContainerCell: UITableViewCell {
         placeLabel.numberOfLines = 1
         placeLabel.textAlignment = .center
         placeLabel.textColor = UIColor(red: 0.588, green: 0.584, blue: 0.608, alpha: 1)
-        placeLabel.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        placeLabel.font = UIFont(name: Fonts.sFProDisplayRegular.name, size: 14)
         placeLabel.lineBreakMode = .byTruncatingTail
         placeLabel.text = "town".localized
         
@@ -103,7 +103,7 @@ final class ProfileContainerCell: UITableViewCell {
         hiddenLabel.numberOfLines = 1
         hiddenLabel.textAlignment = .center
         hiddenLabel.textColor = .clear
-        hiddenLabel.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        hiddenLabel.font = UIFont(name: Fonts.sFProDisplayRegular.name, size: 14)
         hiddenLabel.lineBreakMode = .byTruncatingTail
         hiddenLabel.text = "town".localized
         
@@ -114,7 +114,7 @@ final class ProfileContainerCell: UITableViewCell {
         // Добавление значка пина
         profileContainerView.addSubview(imagePin)
         imagePin.translatesAutoresizingMaskIntoConstraints = false
-        imagePin.image = UIImage(named: "Pin")
+        imagePin.image = UIImage(named: ImagesNames.pin.name)
         imagePin.contentMode = .scaleAspectFit
         imagePin.clipsToBounds = true
         

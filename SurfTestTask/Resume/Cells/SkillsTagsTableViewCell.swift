@@ -46,10 +46,10 @@ final class SkillsTagsTableViewCell: UITableViewCell {
         isEditingMode.toggle()
         UIButton.appearance().isHidden = false
         if isEditingMode {
-            editButton.setImage(UIImage(named: "OkButton"), for: .normal)
+            editButton.setImage(UIImage(named: ImagesNames.okButton.name), for: .normal)
             addTag(text: "+")
         } else {
-            editButton.setImage(UIImage(named: "Pan"), for: .normal)
+            editButton.setImage(UIImage(named: ImagesNames.pan.name), for: .normal)
             if !tagsArray.isEmpty {
                 tagsArray.removeAll { $0 == "+" }
             }
@@ -99,7 +99,7 @@ final class SkillsTagsTableViewCell: UITableViewCell {
         var tag: Int = 1
         for str in data  {
             let startstring = str as! String
-            let width = startstring.widthOfString(usingFont: UIFont(name:"AppleSDGothicNeo-Regular", size: 13.0)!)
+            let width = startstring.widthOfString(usingFont: UIFont(name: Fonts.appleSDGothicNeo.name , size: 13.0)!)
             let checkWholeWidth = CGFloat(xPos) + CGFloat(width) + CGFloat(13.0) + CGFloat(25.5)
             
             if checkWholeWidth > UIScreen.main.bounds.size.width - 30.0 {
@@ -122,7 +122,7 @@ final class SkillsTagsTableViewCell: UITableViewCell {
             }
             
             let textlable = UILabel(frame: CGRect(x: 17.0, y: 0.0, width: width, height: bgView.frame.size.height))
-            textlable.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 13.0)
+            textlable.font = UIFont(name: Fonts.appleSDGothicNeo.name, size: 13.0)
             textlable.text = startstring
             textlable.textColor = UIColor.white
             bgView.addSubview(textlable)
@@ -132,7 +132,7 @@ final class SkillsTagsTableViewCell: UITableViewCell {
             button.frame = CGRect(x: bgView.frame.size.width - 2.5 - 23.0, y: bgView.frame.size.height/2-11 , width: 22.0, height: 22.0)
             button.backgroundColor = .clear
             button.layer.cornerRadius = CGFloat(button.frame.size.width)/CGFloat(2.0)
-            button.setImage(UIImage(named: "X"), for: .normal)
+            button.setImage(UIImage(named: ImagesNames.del.name), for: .normal)
             button.tag = tag
             button.addTarget(self, action: #selector(removeTag(_:)), for: .touchUpInside)
             if startstring != "+" {
@@ -181,7 +181,7 @@ extension SkillsTagsTableViewCell {
         skillsContainerView.backgroundColor = .white
         // Настройка UILabel "Мои навыки"
         skillsLabel.text = "my skills".localized
-        skillsLabel.font = UIFont(name: "SFProDisplay-Bold", size: 20)
+        skillsLabel.font = UIFont(name: Fonts.sFProDisplayBold.rawValue , size: 20)
         skillsLabel.textColor = .black
         skillsLabel.translatesAutoresizingMaskIntoConstraints = false
         skillsContainerView.addSubview(skillsLabel)
@@ -193,9 +193,9 @@ extension SkillsTagsTableViewCell {
         
         // Настройка кнопки "режима редактирования"
         if !isEditingMode {
-            editButton.setImage(UIImage(named: "Pan"), for: .normal)
+            editButton.setImage(UIImage(named: ImagesNames.pan.name), for: .normal)
         } else {
-            editButton.setImage(UIImage(named: "OkButton"), for: .normal)
+            editButton.setImage(UIImage(named: ImagesNames.okButton.name), for: .normal)
         }
         editButton.translatesAutoresizingMaskIntoConstraints = false
         editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
