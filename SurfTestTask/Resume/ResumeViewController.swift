@@ -68,14 +68,17 @@ final class ResumeViewController: UIViewController {
         navigationItem.titleView?.backgroundColor = .systemGray6
     }
     
-    func plusHeight() {
-        Constants.tagsCellHeight += 60
-        tableView.reloadData()
-    }
-
-    func minusHeight() {
-        Constants.tagsCellHeight -= 60
-        tableView.reloadData()
+    
+    
+    func changeHeight(addOrRemoveHeight: ChanngeHeightCell) {
+        switch addOrRemoveHeight {
+        case .add:
+            Constants.tagsCellHeight += 60
+            tableView.reloadData()
+        case .remove:
+            Constants.tagsCellHeight -= 60
+            tableView.reloadData()
+        }
     }
     
     private func createTableView() -> UITableView {
@@ -125,22 +128,19 @@ extension ResumeViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+
 extension ResumeViewController: SkillsTableViewCellDelegate {
     func alertForNewTag() {
         createAlertController()
     }
 }
 
-enum HardcodedConstants {
-    static let name = "Ганзицкий"
-}
-
 extension ResumeViewController: SkillsTableViewCellChangeHeightDelegate {
     func addHeight() {
-        plusHeight()
+        changeHeight(addOrRemoveHeight: .add)
     }
     
     func removeHeight() {
-        minusHeight()
+        changeHeight(addOrRemoveHeight: .remove)
     }
 }

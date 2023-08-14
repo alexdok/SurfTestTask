@@ -10,8 +10,13 @@ protocol SkillsTableViewCellDelegate: AnyObject {
 }
 
 protocol SkillsTableViewCellChangeHeightDelegate: AnyObject {
-    func plusHeight()
-    func minusHeight()
+    func addHeight()
+    func removeHeight()
+}
+
+enum ChanngeHeightCell {
+    case add
+    case remove
 }
 
 class SkillsTagsTableViewCell: UITableViewCell {
@@ -49,7 +54,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
         ])
         skillsContainerView.backgroundColor = .white
         // Настройка UILabel "Мои навыки"
-        skillsLabel.text = "Мои навыки"
+        skillsLabel.text = "my skills".localized
         skillsLabel.font = UIFont(name: "SFProDisplay-Bold", size: 20)
         skillsLabel.textColor = .black
         skillsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +96,6 @@ class SkillsTagsTableViewCell: UITableViewCell {
         if isEditingMode {
             editButton.setImage(UIImage(named: "OkButton"), for: .normal)
             addTag(text: "+")
-            
         } else {
             editButton.setImage(UIImage(named: "Pan"), for: .normal)
             if !tagsArray.isEmpty {
@@ -150,7 +154,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
                 xPos = 16
                 yPos = yPos + 56
                 if yPos > contentView.bounds.size.height - 50 {
-                    delegateHeight?.plusHeight()
+                    delegateHeight?.addHeight()
                     return
                 }
             }
@@ -202,7 +206,7 @@ class SkillsTagsTableViewCell: UITableViewCell {
     func comresureContentView() {
         guard let originY = arrayCellsTags.last?.frame.origin.y else { return }
         if originY + 56 < contentView.bounds.height + 20 {
-            delegateHeight?.minusHeight()
+            delegateHeight?.removeHeight()
         }
     }
     
