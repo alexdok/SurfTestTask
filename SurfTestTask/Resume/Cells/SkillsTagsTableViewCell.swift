@@ -128,7 +128,7 @@ final class SkillsTagsTableViewCell: UITableViewCell {
             bgView.addSubview(textlable)
             arrayCellsTags.append(bgView)
             
-            let button = UIButton(type: .custom)
+            let button = CustomeButton(type: .custom)
             button.frame = CGRect(x: bgView.frame.size.width - 2.5 - 23.0, y: bgView.frame.size.height/2-11 , width: 22.0, height: 22.0)
             button.backgroundColor = .clear
             button.layer.cornerRadius = CGFloat(button.frame.size.width)/CGFloat(2.0)

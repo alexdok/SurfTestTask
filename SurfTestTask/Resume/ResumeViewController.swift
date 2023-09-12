@@ -3,7 +3,7 @@ import UIKit
 final class ResumeViewController: UIViewController {
     enum Constants {
         static let profileCellHeight: CGFloat = 287
-        static var tagsCellHeight: CGFloat = 100
+        static var tagsCellHeight: CGFloat = 150
         static let aboutCellHeight: CGFloat = 200
         static let changeHeigth: CGFloat = 60
     }
