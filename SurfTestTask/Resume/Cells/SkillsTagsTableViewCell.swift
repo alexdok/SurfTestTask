@@ -57,7 +57,7 @@ final class SkillsTagsTableViewCell: UITableViewCell {
             createTagCloud(OnView: self.contentView, withArray: tagsArray as [AnyObject])
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.saveTags(arrayTags: self.tagsArray)
-                self.comresureContentView()
+                self.compresureContentView()
             }
         }
     }
@@ -155,7 +155,7 @@ final class SkillsTagsTableViewCell: UITableViewCell {
         }
     }
     
-    func comresureContentView() {
+    func compresureContentView() {
         guard let originY = arrayCellsTags.last?.frame.origin.y else { return }
         if originY + 56 < contentView.bounds.height + 20 {
             delegateHeight?.removeHeight()

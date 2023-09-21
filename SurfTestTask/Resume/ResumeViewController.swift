@@ -77,6 +77,7 @@ final class ResumeViewController: UIViewController {
             Constants.tagsCellHeight += Constants.changeHeigth
             tableView.reloadData()
         case .remove:
+            guard Constants.tagsCellHeight >= 200 else { return }
             Constants.tagsCellHeight -= Constants.changeHeigth
             tableView.reloadData()
         }

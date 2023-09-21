@@ -27,8 +27,6 @@ final class AboutMeTableViewCell: UITableViewCell {
         contentView.addSubview(aboutMeLabel)
          aboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
          
-         
-         // Set constraints for the aboutMeLabel
          NSLayoutConstraint.activate([
              aboutMeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
              aboutMeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
